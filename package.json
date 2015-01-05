@@ -1,0 +1,12 @@
+{
+    "name":"scorePi",
+    "version" : "0.0.1",
+    "description" : "Scrape scrape espn.com for live scores.",
+    "main" : "server.js",
+    "author" : "Kevin Delgado",
+    "dependencies" : {
+	"express" : "latest",
+	"request" : "latest",
+	"cheerio" : "latest"
+    }
+}
