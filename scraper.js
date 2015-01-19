@@ -6,15 +6,15 @@ var app = express();
 
 //app.get('/scrape', function(req, res){
 var url = 'http://scores.espn.go.com/ncb/scoreboard';
-var num = process.argv[2];
+//var num = process.argv[2];
 //console.log(num);
     
 request(url, function(error, response, html){
     if(!error){
         var $ = cheerio.load(html);
 	
-	$('div.mod-content').each(function(i, element){
-	    if(i == num){
+	$('div.mod-content').each(function(element){
+	    //if(i == num){
 		var game = $(this);
 		var vTeam = game.find('.visitor').find('.team-name').text();
 		var vScore = game.find('.visitor').find('.final').text();
@@ -27,8 +27,9 @@ request(url, function(error, response, html){
 		    hTeam: hTeam,
 		    hScore: hScore
 		};
-		console.log('%s %s\n%s%s', vTeam, vScore, hTeam, hScore);
-	    }
+		if(vTeam != ""){
+			console.log('%s %s\n%s%s', vTeam, vScore, hTeam, hScore);
+		}
 	});	    
     }
 })
